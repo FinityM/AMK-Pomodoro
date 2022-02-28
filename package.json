@@ -1,0 +1,30 @@
+{
+  "name": "amk-pomodoro",
+  "version": "1.0.0",
+  "description": "AMK Pomodoro Web application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FinityM/AMK-Pomodoro.git"
+  },
+  "author": "Mark Cyrus Cledera, Armando Ciobanu, Kian Hennessy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FinityM/AMK-Pomodoro/issues"
+  },
+  "homepage": "https://github.com/FinityM/AMK-Pomodoro#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
