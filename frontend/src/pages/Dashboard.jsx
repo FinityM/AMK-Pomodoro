@@ -27,6 +27,10 @@ function Dashboard() {
     dispatch(getGoals())
 
     if(!isError){
+      dispatch(reset)
+    }
+
+    return () => {
       dispatch(reset())
     }
   }, [user, navigate, isError, message, dispatch])
