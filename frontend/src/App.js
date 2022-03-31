@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Timer from  './components/pomodorTimer.jsx'
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
           </Routes>
+        <Timer />
+
         </div>
       </Router>
       <ToastContainer />
