@@ -1,17 +1,17 @@
-import { CircularProgressbar ,buildStyles} from 'react-circular-progressbar';
+import {CircularProgressbar, buildStyles} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 
-function Timer(){
+function Timer() {
 
     const workColor = '#9FC5FF';
     const breakColor = '#FFC59F';
 
-    return(
+    return (
 
         <div>
 
-<CircularProgressbar value={100} text={'25:00'}/>
+            <CircularProgressbar value={100} text={'25:00'}/>
 
 
         </div>
