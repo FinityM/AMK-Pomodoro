@@ -13,7 +13,6 @@ function Timer() {
 
             <CircularProgressbar value={100} text={'25:00'}/>
 
-
         </div>
     );
 }

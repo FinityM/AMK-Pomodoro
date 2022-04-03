@@ -1,5 +1,6 @@
 import {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css'
 import {useSelector, useDispatch} from 'react-redux'
 import GoalForm from '../components/GoalForm'
 import GoalItem from '../components/GoalItem'
