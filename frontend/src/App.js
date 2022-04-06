@@ -4,17 +4,22 @@ import Header from './components/Header'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Test, { Account } from './pages/Account'
 
 function App() {
   return (
     <>
       <Router>
+      <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+      <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
         <div className='container'>
           <Header />
           <Routes>
             <Route path='/' element={<Dashboard />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/account' element={<Account />} />
+
           </Routes>
         </div>
       </Router>
