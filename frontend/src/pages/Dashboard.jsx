@@ -15,6 +15,10 @@ function Dashboard() {
     const {user} = useSelector((state) => state.auth)
     const {goals, isLoading, isError, message} = useSelector(
         (state) => state.goals
+
+        
+
+
     )
 
     useEffect(() => {
@@ -43,12 +47,11 @@ function Dashboard() {
 
     return (
         <>
+
             <section className='heading'>
                 <h1>Welcome {user && user.name}</h1>
-                <p>Goals Dashboard</p>
             </section>
 
-            <Timer/>
 
             <GoalForm/>
 
@@ -63,7 +66,11 @@ function Dashboard() {
                     <h3>You have not set any goals</h3>
                 )}
             </section>
+
+            <Timer/>
+
         </>
+
 
 
 
