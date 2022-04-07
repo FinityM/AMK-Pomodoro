@@ -18,9 +18,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 
 const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Dashboard', 'Logout'];
-const nouser = ['Login', 'Register'];
-
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -29,6 +26,20 @@ function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
+
+  const onLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/");
+  };
+
+  const onLogin = () => {
+    navigate("/login")
+  }
+
+  const onRegister = () => {
+    navigate("/register")
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -42,14 +53,8 @@ function Header() {
   };
 
   const handleCloseUserMenu = () => {
+
     setAnchorElUser(null);
-  };
-
-
-  const onLogout = () => {
-    dispatch(logout());
-    dispatch(reset());
-    navigate("/");
   };
 
   return (
@@ -127,28 +132,43 @@ function Header() {
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
-            <Menu
-                  sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  {settings.map((nouser) => (
-                    <MenuItem key={nouser} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{nouser}</Typography>
-                    </MenuItem>
-                  ))}
-                </Menu>
+
+            {user ? (<Menu sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu} >
+              <MenuItem onClick={onLogout}>Logout</MenuItem>
+
+
+            </Menu>) : (<Menu sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu} >
+              <MenuItem onClick={onLogin}>Login</MenuItem>
+              <MenuItem onClick={onRegister}>Register</MenuItem>
+
+            </Menu>)}
+
           </Box>
         </Toolbar>
       </Container>
