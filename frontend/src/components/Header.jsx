@@ -12,47 +12,47 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-import {FaSignInAlt, FaSignOutAlt, FaUser} from "react-icons/fa";
-import {Link, useNavigate} from "react-router-dom";
-import {useSelector, useDispatch} from "react-redux";
-import {logout, reset} from "../features/auth/authSlice";
+import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, reset } from "../features/auth/authSlice";
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
 function Header() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-  
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const {user} = useSelector((state) => state.auth);
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-      };
-      const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-      };
-    
-      const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-      };
-    
-      const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-      };
-    
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
 
-    const onLogout = () => {
-        dispatch(logout());
-        dispatch(reset());
-        navigate("/");
-    };
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
-    return (
-        <AppBar position="static">
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+
+  const onLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/");
+  };
+
+  return (
+    <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -153,34 +153,34 @@ function Header() {
       </Container>
     </AppBar>
 
-        //<header className="header">
-        //     <div className="logo">
-        //         <Link to="/">W.I.P</Link>
-        //     </div>
-        //     <ul>
-        //         {user ? (
-        //             <li>
-        //                 <button className="btn" onClick={onLogout}>
-        //                     <FaSignOutAlt/> Logout
-        //                 </button>
-        //             </li>
-        //         ) : (
-        //             <>
-        //                 <li>
-        //                     <Link to="/login">
-        //                         <FaSignInAlt/> Login
-        //                     </Link>
-        //                 </li>
-        //                 <li>
-        //                     <Link to="/register">
-        //                         <FaUser/> Register
-        //                     </Link>
-        //                 </li>
-        //             </>
-        //         )}
-        //     </ul>
-        //</header>
-    );
+    //<header className="header">
+    //     <div className="logo">
+    //         <Link to="/">W.I.P</Link>
+    //     </div>
+    //     <ul>
+    //         {user ? (
+    //             <li>
+    //                 <button className="btn" onClick={onLogout}>
+    //                     <FaSignOutAlt/> Logout
+    //                 </button>
+    //             </li>
+    //         ) : (
+    //             <>
+    //                 <li>
+    //                     <Link to="/login">
+    //                         <FaSignInAlt/> Login
+    //                     </Link>
+    //                 </li>
+    //                 <li>
+    //                     <Link to="/register">
+    //                         <FaUser/> Register
+    //                     </Link>
+    //                 </li>
+    //             </>
+    //         )}
+    //     </ul>
+    //</header>
+  );
 }
 
 export default Header;

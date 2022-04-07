@@ -1,9 +1,9 @@
-function PauseButton(props){
+function PauseButton(props) {
 
-    return(
-        <button  className='timerButton'{...props}>
+    return (
+        <button className='timerButton'{...props}>
             Pause
-            </button>
+        </button>
     )
 }
 

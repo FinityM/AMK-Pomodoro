@@ -1,9 +1,9 @@
-function BreakButton(props){
+function BreakButton(props) {
 
-    return(
-        <button  className='timerButton'{...props}>
+    return (
+        <button className='timerButton'{...props}>
             Break
-            </button>
+        </button>
     )
 }
 

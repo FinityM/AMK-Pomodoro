@@ -15,7 +15,7 @@ function Timer() {
 
   const [minutesLeft, setMinutesLeft] = useState(25);
   const [breakminutesLeft, setBreakMinutesLeft] = useState(5);
-  const [secondsLeft, setSecondsLeft] = useState(minutesLeft*60);
+  const [secondsLeft, setSecondsLeft] = useState(minutesLeft * 60);
   const [paused, setPaused] = useState(false);
   const [timerMode, setTimerMode] = useState("work");
 
@@ -53,7 +53,7 @@ function Timer() {
       }
 
       tick();
-    },1000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [minutesLeft, breakminutesLeft]);
@@ -61,7 +61,7 @@ function Timer() {
   const totalTime = timerMode === "work" ? minutesLeft * 60 : breakminutesLeft * 60;
   const timerBarMath = (secondsLeft / totalTime * 100);
 
-  const displayMinutes = Math.floor(secondsLeft /60);
+  const displayMinutes = Math.floor(secondsLeft / 60);
 
   let displaySeconds = secondsLeft % 60;
   if (displaySeconds < 10) {
@@ -81,10 +81,10 @@ function Timer() {
           })}
         />
         <div className="timerButtons" style={{ marginTop: "10px" }}>
-          {paused ? <StartButton onClick={() => {setPaused(false); pausedRef.current = false; }} /> 
-          : <PauseButton onClick={() => { setPaused(true); pausedRef.current = true; }}/>
-        }
-          
+          {paused ? <StartButton onClick={() => { setPaused(false); pausedRef.current = false; }} />
+            : <PauseButton onClick={() => { setPaused(true); pausedRef.current = true; }} />
+          }
+
         </div>
 
       </div>

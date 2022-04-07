@@ -173,12 +173,12 @@ function Register() {
                         </Grid>
                     </Box>
                 </Box>
-                
+
             </Container>
         </ThemeProvider>
 
 
-    
+
     )
 }
 
