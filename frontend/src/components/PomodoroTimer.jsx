@@ -5,78 +5,93 @@ import { Stack } from "@mui/material";
 import { isValidElement, useEffect } from "react";
 import StartButton from "./StartButton";
 import PauseButton from "./PauseButton";
-import { useState} from "react";
+import { useState } from "react";
 import { useRef } from "react";
+import BreakButton from "./BreakButton";
 
 function Timer() {
-
   const workColor = "#9FC5FF";
   const breakColor = "#FFC59F";
 
-  const [minutesLeft, setMinutesLeft] = useState(0);
-  const [secondsLeft, setSecondsLeft] = useState(0);
+  const [minutesLeft, setMinutesLeft] = useState(25);
+  const [breakminutesLeft, setBreakMinutesLeft] = useState(5);
+  const [secondsLeft, setSecondsLeft] = useState(minutesLeft*60);
   const [paused, setPaused] = useState(false);
   const [timerMode, setTimerMode] = useState("work");
 
+  const pausedRef = useRef(paused);
+  const secondsLeftRef = useRef(secondsLeft);
+  const modeRef = useRef(timerMode);
 
-  const pausedRef= useRef(paused);
-  const secondsLeftRef= useRef(secondsLeft);
-  const timerModeRef = useRef(timerMode);
-
-
-
-  function initialiseTime() {
-    setSecondsLeft(minutesLeft * 60);
-  }
-
-  function tickDown() {
-    setSecondsLeft(secondsLeftRef.current - 1);
+  function tick() {
+    secondsLeftRef.current--;
+    setSecondsLeft(secondsLeftRef.current);
   }
 
   useEffect(() => {
-    initialiseTime();
+
+    function ModeSwitcher() {
+      const nextMode = modeRef.current === 'work' ? 'break' : 'work';
+      const nextSeconds = (nextMode === 'work' ? minutesLeft : breakminutesLeft) * 60;
+
+      setTimerMode(nextMode);
+      modeRef.current = nextMode;
+
+      setSecondsLeft(nextSeconds);
+      secondsLeftRef.current = nextSeconds;
+    }
+
+    secondsLeftRef.current = minutesLeft * 60;
+    setSecondsLeft(secondsLeftRef.current);
 
     const interval = setInterval(() => {
       if (pausedRef.current) {
         return;
       }
-      if (minutesLeft === 0 && secondsLeft === 0) {
-        setMinutesLeft(5);
+      if (secondsLeftRef.current === 0) {
+        return ModeSwitcher();
       }
-      tickDown();
-    }, 1000);
 
-    return ()=> clearInterval(interval);
-  });
+      tick();
+    },1000);
 
-  const totalTime =  timerMode === 'work' ? 25 * 60 : 5 * 60;
-const timerBarMath = (secondsLeft / totalTime) * 100;
+    return () => clearInterval(interval);
+  }, [minutesLeft, breakminutesLeft]);
 
-const displayMinutes = Math.floor (secondsLeft/60);
+  const totalTime = timerMode === "work" ? minutesLeft * 60 : breakminutesLeft * 60;
+  const timerBarMath = (secondsLeft / totalTime * 100);
 
-let displaySeconds = secondsLeft % 60;
-if (displaySeconds < 10) {
-  displaySeconds = '0' + displaySeconds;
-}
+  const displayMinutes = Math.floor(secondsLeft /60);
+
+  let displaySeconds = secondsLeft % 60;
+  if (displaySeconds < 10) {
+    displaySeconds = "0" + displaySeconds;
+  }
 
   return (
     <div className="timerContainer">
       <div class="timer">
         <CircularProgressbar
           value={timerBarMath}
-          text={displayMinutes +':'+ displaySeconds}
+          text={displayMinutes + ":" + displaySeconds}
           styles={buildStyles({
-            textColor: "#9fC5FF",
-            pathColor: workColor,
+            textColor: timerMode === "work" ? workColor : breakColor,
+            pathColor: timerMode === "work" ? workColor : breakColor,
             tailColor: "rgba(255,255,255,.2)",
           })}
         />
         <div className="timerButtons" style={{ marginTop: "10px" }}>
-          {paused ? <StartButton /> : <PauseButton />}
+          {paused ? <StartButton onClick={() => {setPaused(false); pausedRef.current = false; }} /> 
+          : <PauseButton onClick={() => { setPaused(true); pausedRef.current = true; }}/>
+        }
+          
         </div>
+
       </div>
     </div>
   );
 }
+
+
 
 export default Timer;
