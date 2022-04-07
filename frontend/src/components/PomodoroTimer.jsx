@@ -5,58 +5,66 @@ import { Stack } from "@mui/material";
 import { isValidElement, useEffect } from "react";
 import StartButton from "./StartButton";
 import PauseButton from "./PauseButton";
-import { useState } from "react";
+import { useState} from "react";
+import { useRef } from "react";
 
 function Timer() {
+
   const workColor = "#9FC5FF";
   const breakColor = "#FFC59F";
 
-  const[minutesLeft, setMinutesLeft] = useState(25);
+  const [minutesLeft, setMinutesLeft] = useState(0);
   const [secondsLeft, setSecondsLeft] = useState(0);
-  const [paused, setPaused] = useState(true);
+  const [paused, setPaused] = useState(false);
   const [timerMode, setTimerMode] = useState("work");
 
 
-  function tickDown(){
+  const pausedRef= useRef(paused);
+  const secondsLeftRef= useRef(secondsLeft);
+  const timerModeRef = useRef(timerMode);
 
-    setSecondsLeft(secondsLeft - 1);
+
+
+  function initialiseTime() {
+    setSecondsLeft(minutesLeft * 60);
   }
-  function initialiseTime(){
-    setSecondsLeft(minutesLeft*60);
-  }
-  function modeSwitcher()
-  {
-      const newMode = timerMode === "work" ? "break" : "work";
-        setTimerMode(newMode);
-        secondsLeft === 0 ? initialiseTime() : setSecondsLeft(secondsLeft);
+
+  function tickDown() {
+    setSecondsLeft(secondsLeftRef.current - 1);
   }
 
   useEffect(() => {
-      initialiseTime();
+    initialiseTime();
 
-      setInterval   (() => {
-          if(paused){
-              return;
-          }
-          if (secondsLeft === 0) {
-              return modeSwitcher();
-          }
-            tickDown();
-        }
-    
+    const interval = setInterval(() => {
+      if (pausedRef.current) {
+        return;
+      }
+      if (minutesLeft === 0 && secondsLeft === 0) {
+        setMinutesLeft(5);
+      }
+      tickDown();
+    }, 1000);
 
-        
-  
+    return ()=> clearInterval(interval);
+  });
 
+  const totalTime =  timerMode === 'work' ? 25 * 60 : 5 * 60;
+const timerBarMath = (secondsLeft / totalTime) * 100;
 
+const displayMinutes = Math.floor (secondsLeft/60);
 
+let displaySeconds = secondsLeft % 60;
+if (displaySeconds < 10) {
+  displaySeconds = '0' + displaySeconds;
+}
 
   return (
     <div className="timerContainer">
       <div class="timer">
         <CircularProgressbar
-          value={100}
-          text={`${minutesLeft}:${secondsLeft}`}
+          value={timerBarMath}
+          text={displayMinutes +':'+ displaySeconds}
           styles={buildStyles({
             textColor: "#9fC5FF",
             pathColor: workColor,
