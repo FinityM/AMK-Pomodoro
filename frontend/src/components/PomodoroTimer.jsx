@@ -7,7 +7,7 @@ import StartButton from "./StartButton";
 import PauseButton from "./PauseButton";
 import { useState } from "react";
 import { useRef } from "react";
-import BreakButton from "./BreakButton";
+
 
 function Timer() {
   const workColor = "#9FC5FF";
@@ -80,8 +80,9 @@ function Timer() {
             tailColor: "rgba(255,255,255,.2)",
           })}
         />
-        <div className="timerButtons" style={{ marginTop: "10px" }}>
-          {paused ? <StartButton onClick={() => { setPaused(false); pausedRef.current = false; }} />
+        <div className="timerButtons" style={{ marginTop: "10px"}} >
+
+          {paused ? <StartButton   onClick={() => { setPaused(false); pausedRef.current = false;  }} />
             : <PauseButton onClick={() => { setPaused(true); pausedRef.current = true; }} />
           }
 
