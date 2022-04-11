@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import goalService from './goalService'
 
 const initialState = {
@@ -46,6 +46,25 @@ export const getGoals = createAsyncThunk(
         }
     }
 )
+
+// Update user goal
+export const updateGoal = createAsyncThunk(
+    "goals/update",
+    async ({ goalId, goalData }, thunkAPI) => {
+        try {
+            const token = thunkAPI.getState().auth.user.token;
+            return await goalService.updateGoal(goalId, goalData, token);
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
 
 // Delete user goal
 export const deleteGoal = createAsyncThunk(
@@ -100,6 +119,26 @@ export const goalSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
             })
+            .addCase(updateGoal.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(updateGoal.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.goals = state.goals.map((goal) =>
+                    goal._id !== action.payload.id
+                        ? {
+                            ...goal,
+                            text: action.payload
+                        }
+                        : goal
+                );
+            })
+            .addCase(updateGoal.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
+            })
             .addCase(deleteGoal.pending, (state) => {
                 state.isLoading = true
             })
@@ -115,8 +154,9 @@ export const goalSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
             })
+
     },
 })
 
-export const {reset} = goalSlice.actions
+export const { reset } = goalSlice.actions
 export default goalSlice.reducer
