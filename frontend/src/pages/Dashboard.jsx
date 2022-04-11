@@ -48,8 +48,6 @@ function Dashboard() {
                 <p>Goals Dashboard</p>
             </section>
 
-            <Timer/>
-
             <GoalForm/>
 
             <section className='content'>
