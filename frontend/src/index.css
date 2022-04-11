@@ -9,8 +9,6 @@
 body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
-  background-image: linear-gradient(#FFFEF8 ,#9FC5FF);
-
 }
 
 a {
@@ -214,9 +212,4 @@ h3 {
   .heading p {
     font-size: 1.5rem;
   }
-
-.complete{
-  text-decoration: line-through;
-  opacity: 40%;
-}
 }
