@@ -12,9 +12,11 @@ import { useRef } from "react";
 function Timer() {
   const workColor = "#9FC5FF";
   const breakColor = "#FFC59F";
+  
 
-  const [minutesLeft, setMinutesLeft] = useState(25);
-  const [breakminutesLeft, setBreakMinutesLeft] = useState(5);
+
+  const [minutesLeft] = useState(25);
+  const [breakminutesLeft] = useState(5);
   const [secondsLeft, setSecondsLeft] = useState(minutesLeft * 60);
   const [paused, setPaused] = useState(false);
   const [timerMode, setTimerMode] = useState("work");
@@ -53,7 +55,7 @@ function Timer() {
       }
 
       tick();
-    }, 1000);
+    }, 10);
 
     return () => clearInterval(interval);
   }, [minutesLeft, breakminutesLeft]);
