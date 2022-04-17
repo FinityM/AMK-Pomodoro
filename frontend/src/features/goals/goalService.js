@@ -36,7 +36,7 @@ const updateGoal= async (goalId, goalData, token) => {
       },
     };
   
-    const response = await axios.put(API_URL + goalId, goalData, config);
+    const response = await axios.put(API_URL + "/" + goalId, goalData, config);
   
     return response.data;
   };
