@@ -13,8 +13,6 @@ function Timer() {
   const workColor = "#9FC5FF";
   const breakColor = "#FFC59F";
   
-
-
   const [minutesLeft] = useState(25);
   const [breakminutesLeft] = useState(5);
   const [secondsLeft, setSecondsLeft] = useState(minutesLeft * 60);

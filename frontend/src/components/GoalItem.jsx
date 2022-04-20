@@ -1,6 +1,5 @@
-
 import {useDispatch} from "react-redux";
-import {deleteGoal} from "../features/goals/goalSlice";
+import { deleteGoal, updateGoal } from "../features/goals/goalSlice";
 import "../index.css";
 
 function GoalItem({goal}) {

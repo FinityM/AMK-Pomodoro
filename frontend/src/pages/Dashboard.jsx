@@ -7,6 +7,7 @@ import GoalItem from "../components/GoalItem";
 import Spinner from "../components/Spinner";
 import Timer from "../components/PomodoroTimer";
 import { getGoals, reset } from "../features/goals/goalSlice";
+import { Container, Grid } from "@mui/material";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -43,25 +44,33 @@ function Dashboard() {
 
   return (
     <>
-      <section className="heading">
-        <h1>Welcome {user && user.name}</h1>
-      </section>
+      <Container>     
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <section className="heading">
+            <h1>Welcome {user && user.name}</h1>
+          </section>
+          <Timer />
 
-      <GoalForm />
+          <GoalForm />
 
-      <section className="content">
-        {goals.length > 0 ? (
-          <div className="goals">
-            {goals.map((goal) => (
-              <GoalItem key={goal._id} goal={goal} />
-            ))}
-          </div>
-        ) : (
-          <h3>You have not set any goals</h3>
-        )}
-      </section>
-
-      <Timer />
+          <section className="content">
+            {goals.length > 0 ? (
+              <div className="goals">
+                {goals.map((goal) => (
+                  <GoalItem key={goal._id} goal={goal} />
+                ))}
+              </div>
+            ) : (
+              <h3>You have not set any goals</h3>
+            )}
+          </section>
+        </Grid>
+      </Container>
     </>
   );
 }

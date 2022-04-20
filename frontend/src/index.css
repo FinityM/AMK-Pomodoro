@@ -1,5 +1,3 @@
-
-
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 * {
   margin: 0;
@@ -222,49 +220,45 @@ h3 {
 }
 } */
 
-.timerButton{
-
-  background-color: #9FC5FF;
-outline: none;
-border: 0;
-width: 297px;
-height: 54px;
-border-radius: 20px;
-display: inline-block;
-margin: 10px;
-color: white;
-font-size: 20px;
-font-weight: semibold;
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.timerButton {
+  background-color: #9fc5ff;
+  outline: none;
+  border: 0;
+  width: 297px;
+  height: 54px;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: semibold;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.timer{
-
-  display:inline-block;
-  margin:10px;
+.timer {
+  display: inline-block;
+  margin: 10px;
   width: 300px;
   height: 305px;
 }
 
-
-
-.form,h3{
+.form,
+h3 {
   margin-bottom: 10px;
   margin-left: 1000px;
   margin-left: 60px;
   margin-top: 100px;
-
-
 }
 
-.heading{
+.heading {
   margin-top: 10px;
   margin-bottom: 10px;
   text-align: center;
 }
 
-.timerContainer{
-  background-color: #FFFFFF;
+.timerContainer {
+  background-color: #ffffff;
   border-radius: 20px;
   padding: 20px;
   margin-top: 20px;
@@ -273,20 +267,17 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   margin-bottom: 20px;
   width: 330px;
   height: 530px;
-
-
 }
-
 
 @keyframes move_wave {
   0% {
-      transform: translateX(0) translateZ(0) scaleY(1)
+    transform: translateX(0) translateZ(0) scaleY(1);
   }
   50% {
-      transform: translateX(-25%) translateZ(0) scaleY(0.55)
+    transform: translateX(-25%) translateZ(0) scaleY(0.55);
   }
   100% {
-      transform: translateX(-50%) translateZ(0) scaleY(1)
+    transform: translateX(-50%) translateZ(0) scaleY(1);
   }
 }
 .waveWrapper {
@@ -305,7 +296,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   overflow: hidden;
   height: 100%;
   bottom: -1px;
-  background-image: linear-gradient(to top, #9FC5FF 20%, #FFFFFF 80%);
+  background-image: linear-gradient(to top, #9fc5ff 20%, #ffffff 80%);
 }
 .bgTop {
   z-index: 15;
@@ -331,10 +322,10 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   background-size: 50% 100px;
 }
 .waveAnimation .waveTop {
-animation: move-wave 3s;
- -webkit-animation: move-wave 3s;
- -webkit-animation-delay: 1s;
- animation-delay: 1s;
+  animation: move-wave 3s;
+  -webkit-animation: move-wave 3s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
 }
 .waveMiddle {
   background-size: 50% 120px;

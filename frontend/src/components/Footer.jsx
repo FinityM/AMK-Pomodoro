@@ -3,8 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
-
-
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -20,8 +18,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 export default function Footer() {
     return <footer>
         <Box>
-        <Box sx={{ bgcolor: 'primary.main' }}/>
-            <Container maxWidth="lg">
+        <Box sx={{ bgcolor: 'primary.main', opacity: '0' }}/>
+            <Container maxWidth="lg" >
                 <Grid container spacing={5}>
                     <Grid item xs={12} sm={4}>
                         <Box borderBottom={1}>Help</Box>
