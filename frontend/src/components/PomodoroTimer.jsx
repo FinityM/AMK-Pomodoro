@@ -1,18 +1,15 @@
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import Button from "@mui/material/Button";
-import { Stack } from "@mui/material";
 import { isValidElement, useEffect } from "react";
 import StartButton from "./StartButton";
 import PauseButton from "./PauseButton";
 import { useState } from "react";
 import { useRef } from "react";
 
-
 function Timer() {
   const workColor = "#9FC5FF";
   const breakColor = "#FFC59F";
-  
+
   const [minutesLeft] = useState(25);
   const [breakminutesLeft] = useState(5);
   const [secondsLeft, setSecondsLeft] = useState(minutesLeft * 60);
@@ -29,10 +26,10 @@ function Timer() {
   }
 
   useEffect(() => {
-
     function ModeSwitcher() {
-      const nextMode = modeRef.current === 'work' ? 'break' : 'work';
-      const nextSeconds = (nextMode === 'work' ? minutesLeft : breakminutesLeft) * 60;
+      const nextMode = modeRef.current === "work" ? "break" : "work";
+      const nextSeconds =
+        (nextMode === "work" ? minutesLeft : breakminutesLeft) * 60;
 
       setTimerMode(nextMode);
       modeRef.current = nextMode;
@@ -58,8 +55,9 @@ function Timer() {
     return () => clearInterval(interval);
   }, [minutesLeft, breakminutesLeft]);
 
-  const totalTime = timerMode === "work" ? minutesLeft * 60 : breakminutesLeft * 60;
-  const timerBarMath = (secondsLeft / totalTime * 100);
+  const totalTime =
+    timerMode === "work" ? minutesLeft * 60 : breakminutesLeft * 60;
+  const timerBarMath = (secondsLeft / totalTime) * 100;
 
   const displayMinutes = Math.floor(secondsLeft / 60);
 
@@ -80,19 +78,26 @@ function Timer() {
             tailColor: "rgba(255,255,255,.2)",
           })}
         />
-        <div className="timerButtons" style={{ marginTop: "10px"}} >
-
-          {paused ? <StartButton   onClick={() => { setPaused(false); pausedRef.current = false;  }} />
-            : <PauseButton onClick={() => { setPaused(true); pausedRef.current = true; }} />
-          }
-
+        <div className="timerButtons" style={{ marginTop: "10px" }}>
+          {paused ? (
+            <StartButton
+              onClick={() => {
+                setPaused(false);
+                pausedRef.current = false;
+              }}
+            />
+          ) : (
+            <PauseButton
+              onClick={() => {
+                setPaused(true);
+                pausedRef.current = true;
+              }}
+            />
+          )}
         </div>
-
       </div>
     </div>
   );
 }
-
-
 
 export default Timer;

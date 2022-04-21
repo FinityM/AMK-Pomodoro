@@ -87,6 +87,9 @@ h3 {
   color: #828282;
 }
 
+
+} */
+
 .goals {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -205,20 +208,7 @@ h3 {
   .form {
     width: 90%;
   }
-
-  .heading h1 {
-    font-size: 2rem;
-  }
-
-  .heading p {
-    font-size: 1.5rem;
-  }
-
-.complete{
-  text-decoration: line-through;
-  opacity: 40%;
 }
-} */
 
 .timerButton {
   background-color: #9fc5ff;

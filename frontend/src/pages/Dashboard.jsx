@@ -44,16 +44,16 @@ function Dashboard() {
 
   return (
     <>
-      <Container>     
+      <Container>
+        <section className="heading">
+          <h1>Welcome {user && user.name}</h1>
+        </section>
         <Grid
           container
-          direction="row"
+          direction="column"
           justifyContent="center"
           alignItems="center"
         >
-          <section className="heading">
-            <h1>Welcome {user && user.name}</h1>
-          </section>
           <Timer />
 
           <GoalForm />
