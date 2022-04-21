@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 
 export default function Footer() {
   return (
-    <footer>
       <Box
         component="footer"
         sx={{
@@ -24,6 +23,6 @@ export default function Footer() {
           </Typography>
         </Container>
       </Box>
-    </footer>
+   
   );
 }

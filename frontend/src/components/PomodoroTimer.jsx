@@ -5,6 +5,7 @@ import StartButton from "./StartButton";
 import PauseButton from "./PauseButton";
 import { useState } from "react";
 import { useRef } from "react";
+import { Box } from "@mui/system";
 
 function Timer() {
   const workColor = "#9FC5FF";
@@ -67,7 +68,8 @@ function Timer() {
   }
 
   return (
-    <div className="timerContainer">
+    <Box>
+       <div className="timerContainer">
       <div class="timer">
         <CircularProgressbar
           value={timerBarMath}
@@ -97,6 +99,9 @@ function Timer() {
         </div>
       </div>
     </div>
+
+    </Box>
+   
   );
 }
 
