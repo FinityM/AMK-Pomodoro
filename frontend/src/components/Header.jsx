@@ -42,7 +42,7 @@ function Header() {
   };
 
   const onVideo = () => {
-    navigate("/video");
+    navigate("#");
   };
 
   const handleOpenNavMenu = (event) => {
