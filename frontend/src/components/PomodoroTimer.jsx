@@ -14,7 +14,7 @@ function Timer() {
   const [minutesLeft] = useState(25);
   const [breakminutesLeft] = useState(5);
   const [secondsLeft, setSecondsLeft] = useState(minutesLeft * 60);
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(true);
   const [timerMode, setTimerMode] = useState("work");
 
   const pausedRef = useRef(paused);
