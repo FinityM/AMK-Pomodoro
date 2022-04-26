@@ -42,7 +42,7 @@ function Header() {
   };
 
   const onVideo = () => {
-    navigate("#");
+    navigate("/video");
   };
 
   const handleOpenNavMenu = (event) => {
@@ -102,6 +102,7 @@ function Header() {
                 display: { xs: "block", md: "none" },
               }}
             >
+              <MenuItem onClick={onHome}>Home</MenuItem>
               <MenuItem onClick={onVideo}>Video</MenuItem>
             </Menu>
           </Box>
@@ -114,12 +115,18 @@ function Header() {
             W.I.P
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              <MenuItem onClick={onHome}>Home</MenuItem>
+            </Button>
             <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
             >
               <MenuItem onClick={onVideo}>Video</MenuItem>
-            </Button>
+            </Button>   
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

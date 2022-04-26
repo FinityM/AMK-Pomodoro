@@ -1,8 +1,6 @@
 /**
  * Goal model for the resources from the website which in this case
  * will be for the goals on the website
- * 
- * 
  */
 
 const mongoose = require('mongoose')
@@ -12,6 +10,7 @@ const mongoose = require('mongoose')
  */
 const goalSchema = mongoose.Schema(
   {
+    // associate the goal with a user
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
