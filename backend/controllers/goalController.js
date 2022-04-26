@@ -1,10 +1,12 @@
 /**
+ * Part of one of the controllers for the REST API
+ * 
  * Goal controller that contains
- * CRUD functions for the goal route
+ * CRUD functions for the goal routes
  * 
  * Async is added to the functions for when mongoose is used
  * in the database connection to make sure a promise is returned
- * in other words an eventual completion of an asynchronous operations
+ * in other words an eventual completion of an asynchronous operation
  * which is what the database connection is.
  * 
  * Express Async handler is used to cut down on using try catches for the async 
@@ -20,13 +22,12 @@ const asyncHandler = require('express-async-handler')
  *  
  */ 
 const Goal = require('../models/goalModel')
-const User = require('../models/userModel')
 
 // @desc    Get goals
 // @route   GET /api/goals
 // @access  Private
 const getGoals = asyncHandler(async (req, res) => {
-  // Read the goal by user
+  // Read the goal by the user only
   const goals = await Goal.find({ user: req.user.id })
 
   // Return the goals
@@ -117,7 +118,7 @@ const deleteGoal = asyncHandler(async (req, res) => {
   res.status(200).json({ id: req.params.id })
 })
 
-
+// Export the methods
 module.exports = {
   getGoals,
   setGoal,
