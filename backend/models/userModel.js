@@ -1,7 +1,18 @@
+/**
+ * User Model for the users on the website
+ */
 const mongoose = require('mongoose')
 
+/**
+ * User fields that we want to use
+ */
 const userSchema = mongoose.Schema(
   {
+    /**
+     * Name field,
+     * email field,
+     * password field
+     */
     name: {
       type: String,
       required: [true, 'Please add a name'],
