@@ -17,11 +17,10 @@ function GoalForm() {
   };
 
   return (
-    <Box
-      sx={{
-        margin: 10,
-      }}
-    >
+
+    <div className="formContainer">
+
+        
       <Grid
         container
         direction="row"
@@ -38,14 +37,14 @@ function GoalForm() {
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
-        </Grid>
-        <Grid item>
-          <Button variant="contained" size="large" sx={{p: 2,}} onClick={onSubmit}>
+
+<Button variant="contained" size="large" sx={{p: 2,}} onClick={onSubmit}>
             Add
           </Button>
         </Grid>
+   
       </Grid>
-    </Box>
+    </div>
   );
 }
 

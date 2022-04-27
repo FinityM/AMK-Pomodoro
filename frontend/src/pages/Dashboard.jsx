@@ -47,7 +47,7 @@ function Dashboard() {
   return (
     <Box>
       <Grid>
-        <Typography variant="h4" m={5} textAlign="center">
+        <Typography variant="h3" m={5} textAlign="center">
           Welcome {user && user.name}
         </Typography>
 
@@ -73,7 +73,7 @@ function Dashboard() {
                   
                 </Box>
               ) : (
-                <Typography variant="h3">You have not set any goals</Typography>
+                <Typography variant="h4">You have not set any goals</Typography>
               )}
             </Grid>
           </Grid>

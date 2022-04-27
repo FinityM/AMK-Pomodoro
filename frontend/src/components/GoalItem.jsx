@@ -8,6 +8,8 @@ function GoalItem({ goal }) {
   const dispatch = useDispatch();
 
   return (
+    <div className="goalContainer">
+
     <Grid item>
       {new Date(goal.createdAt).toLocaleString("en-UK")}
       <Grid item>
@@ -20,6 +22,8 @@ function GoalItem({ goal }) {
           elevation={12}
         >
           <Grid container justifyContent="space-between">
+            
+            
             {goal.text}
             <IconButton aria-label="delete" size="large" onClick={() => dispatch(deleteGoal(goal._id))}>
               <DeleteIcon />
@@ -28,6 +32,8 @@ function GoalItem({ goal }) {
         </Paper>
       </Grid>
     </Grid>
+    </div>
+    
   );
 }
 
