@@ -48,7 +48,8 @@ function Dashboard() {
     <Box>
       <Grid>
         <Typography variant="h3" m={5} textAlign="center">
-          Welcome {user && user.name}
+          Welcome {user && user.name} 
+          
         </Typography>
 
         <Grid

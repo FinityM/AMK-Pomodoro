@@ -42,7 +42,7 @@ function Header() {
   };
 
   const onVideo = () => {
-    navigate("#");
+    navigate("/video");
   };
 
   const handleOpenNavMenu = (event) => {
@@ -81,6 +81,8 @@ function Header() {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
+              
+              
             >
               <MenuIcon />
             </IconButton>
@@ -165,6 +167,7 @@ function Header() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
+                <MenuItem onClick={onHome}>Home</MenuItem>
                 <MenuItem onClick={onLogin}>Login</MenuItem>
                 <MenuItem onClick={onRegister}>Register</MenuItem>
               </Menu>

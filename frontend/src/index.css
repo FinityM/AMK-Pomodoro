@@ -36,6 +36,7 @@
 }
 
 .timerButton {
+  text-align: center;
   background-color: #9fc5ff;
   outline: none;
   border: 0;
@@ -91,7 +92,7 @@ h3 {
   margin-right: 20px;
   margin-bottom: 20px;
   width: 330px;
-  height: 530px;
+  height: 500px;
 }
 
 .formContainer{
@@ -107,6 +108,7 @@ h3 {
   height: 60px;
 
 }
+
 
 
 @keyframes move_wave {
